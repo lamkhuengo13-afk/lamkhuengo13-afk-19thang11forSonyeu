@@ -1,80 +1,137 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fbf6ec">
     <title>For Sơn iu cụa em ❤️</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px 12px 35px;
             background-color: #fbf6ec;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
         }
 
         .card-container {
-            position: relative;
             width: 100%;
             max-width: 480px;
+            margin: 0 auto;
         }
 
-        .card-container img.main-img {
+        .card-page {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .card-page img {
+            display: block;
             width: 100%;
             height: auto;
-            display: block;
+            object-fit: contain;
         }
 
-        /* Khung mã QR tệp vào phong thư trên thiệp */
-        .qr-overlay {
-            position: absolute;
-            bottom: 11%;  /* Chỉnh số này nếu muốn dịch lên/xuống cho khớp miệng phong thư */
-            left: 50%;
-            transform: translateX(-50%);
-            
-            background: #fbf6ec;
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            border: 2px dashed #79222c;
+        /* Khu vực mã QR ở cuối trang 3 */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 15px 30px;
+            margin-top: 5px;
+            background-color: #fbf6ec;
             text-align: center;
-            transition: transform 0.3s ease;
         }
 
-        .qr-overlay:hover {
-            transform: translateX(-50%) scale(1.05);
+        .qr-overlay {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            background: #fbf6ec;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            border: 2px dashed #79222c;
         }
 
         .qr-overlay img {
-            width: 100px;
-            height: 100px;
             display: block;
+            width: 150px;
+            height: 150px;
             border-radius: 8px;
         }
 
         .qr-text {
-            font-size: 0.75rem;
+            font-size: 14px;
             color: #79222c;
-            margin-top: 5px;
+            margin-top: 10px;
             font-weight: 600;
-            font-family: sans-serif;
+            line-height: 1.5;
+        }
+
+        .qr-subtext {
+            color: #8b6560;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding-top: 30px;
+            }
+
+            .card-container {
+                max-width: 520px;
+            }
+
+            .qr-overlay img {
+                width: 170px;
+                height: 170px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 10px 6px 25px;
+            }
+
+            .qr-overlay img {
+                width: 135px;
+                height: 135px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="card-container">
-        <!-- Ảnh thiết kế thiệp gốc của em -->
-        <img src="thiep.png" alt="Thiệp Happy Boy's Day" class="main-img">
+    <main class="card-container">
 
-        <!-- Mã QR tự động tạo và trỏ trực tiếp đến trang love.html trên GitHub Pages của em -->
-        <div class="qr-overlay">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Flamkhuengo13-afk.github.io%2Flamkhuengo13-afk-19thang11forSonyeu%2Flove.html" alt="QR Code">
-            <div class="qr-text">Quét đi anh ạ ❤️</div>
-        </div>
-    </div>
+        <!-- TRANG 1 -->
+        <section class="card-page">
+            <img src="thiep1.png" alt="Trang 1 - Bìa thiệp">
+        </section>
 
-</body>
-</html>
+        <!-- TRANG 2 -->
+        <section class="card-page">
+            <img src="thiep2.png" alt="Trang 2 - Lời chúc">
+        </section>
+
+        <!-- TRANG 3 -->
+        <section class="card-page">
+            <img src="thiep3.png" alt="Trang 3 - Trang kết">
+        </section>
+
+        <!-- MÃ QR CUỐI THIỆP -->
+        <section class="qr-section">
+            <div class="qr-overlay">
+                <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Flamkhuengo13-afk.github.io%2Flamkhuengo13-afk-19thang11forSonyeu%2Flove.html"
+                    alt="Quét mã QR để mở món quà bí mật">
+                <div class="qr-text">Quét
