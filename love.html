@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -87,7 +86,6 @@
         /* ===== KHUNG ẢNH POLAROID ===== */
         .polaroid-frame {
             background: #fbf6ec;
-
             padding: 6px 6px 17px;
             border-radius: 4px;
 
@@ -110,10 +108,8 @@
         /* ===== STICKER VINTAGE ===== */
         .vintage-sticker {
             display: block;
-
             max-width: 78px;
             height: auto;
-
             object-fit: contain;
 
             filter:
@@ -154,10 +150,8 @@
         /* ===== BÓ HOA HỒNG CUỐI CÙNG ===== */
         #final-bouquet {
             position: fixed;
-
             left: 50%;
             top: 50%;
-
             z-index: 10;
 
             width: clamp(180px, 35vw, 330px);
@@ -232,7 +226,6 @@
         .welcome-box {
             width: 100%;
             max-width: 340px;
-
             margin: auto;
 
             background: #fbf6ec;
@@ -241,7 +234,6 @@
                      clamp(18px, 6vw, 30px);
 
             border-radius: 16px;
-
             border: 2px dashed #79222c;
 
             box-shadow:
@@ -250,7 +242,6 @@
 
         .welcome-box h3 {
             color: #79222c;
-
             margin-top: 0;
             margin-bottom: 12px;
 
@@ -270,18 +261,15 @@
         /* ===== NÚT MỞ QUÀ ===== */
         .unlock-btn {
             display: inline-block;
-
             max-width: 100%;
 
             background: #79222c;
             color: #fbf6ec;
 
             border: none;
-
             padding: 12px 22px;
 
             font-size: clamp(13px, 3.5vw, 15px);
-
             border-radius: 25px;
 
             cursor: pointer;
@@ -340,7 +328,6 @@
             }
         }
 
-        /* Hỗ trợ người dùng hạn chế chuyển động */
         @media (prefers-reduced-motion: reduce) {
             .unlock-btn {
                 transition: none;
@@ -370,7 +357,7 @@
     <!-- KHU VỰC HIỆU ỨNG -->
     <div class="floating-container" id="floatContainer"></div>
 
-    <!-- BÓ HOA HỒNG -->
+    <!-- BÓ HOA CUỐI CÙNG: ẢNH SỐ 6 -->
     <img
         src="6.jpg"
         id="final-bouquet"
@@ -383,20 +370,36 @@
         const overlay = document.getElementById('welcome-overlay');
         const finalBouquet = document.getElementById('final-bouquet');
 
-        /* Ảnh của hai đứa */
+        /* ===== ẢNH CỦA HAI ĐỨA =====
+           Mỗi ảnh xuất hiện 2 lần trong danh sách.
+        */
         const photos = [
+            '0c606106d6f356ad0fe2.jpg',
+            '80420604b1f131af68e0.jpg',
+            '9b061040a7b527eb7ea4.jpg',
+            'a1dfcdb97a4cfa12a35d.jpg',
+
             '0c606106d6f356ad0fe2.jpg',
             '80420604b1f131af68e0.jpg',
             '9b061040a7b527eb7ea4.jpg',
             'a1dfcdb97a4cfa12a35d.jpg'
         ];
 
-        /* Sticker và hoa */
+        /* ===== STICKER VÀ HOA =====
+           Sử dụng ảnh 1-5 và 7-18.
+           Mỗi ảnh được nhân đôi trong danh sách.
+           Ảnh 6 dành riêng cho bó hoa cuối cùng.
+        */
         const stickers = [
             '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
             '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg',
             '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg',
-            '17.jpg', '18.jpg', '19.jpg', '20.jpg'
+            '17.jpg', '18.jpg',
+
+            '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
+            '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg',
+            '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg',
+            '17.jpg', '18.jpg'
         ];
 
         let currentTilt = 0;
@@ -478,7 +481,7 @@
                 item.appendChild(img);
             }
 
-            /* Giới hạn vị trí theo chiều ngang */
+            /* Vị trí ngẫu nhiên theo chiều ngang */
             item.style.left = (Math.random() * 84 + 5) + 'vw';
 
             const startRot =
@@ -519,23 +522,23 @@
                 overlay.remove();
             }, 500);
 
-            /* Hoa và ảnh bung ra liên tục */
+            /* Ảnh và sticker bay liên tục */
             spawnInterval = setInterval(() => {
                 createItem();
-            }, 300);
+            }, 220);
 
-            /* Một vài ảnh xuất hiện ngay lập tức */
-            for (let i = 0; i < 8; i++) {
+            /* Những ảnh đầu tiên xuất hiện ngay */
+            for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
                     createItem(i % 2 === 0);
-                }, i * 100);
+                }, i * 90);
             }
 
             /* Kết thúc màn bung hoa */
             setTimeout(() => {
                 clearInterval(spawnInterval);
 
-                /* Bó hoa lớn xuất hiện */
+                /* Đợi hiệu ứng bay dịu xuống rồi hiện bó hoa */
                 setTimeout(() => {
                     finalBouquet.classList.add('show');
                 }, 1500);
@@ -543,7 +546,7 @@
             }, 5500);
         });
 
-        /* Chạm màn hình để tạo thêm hoa và ảnh */
+        /* ===== CHẠM MÀN HÌNH ĐỂ TẠO THÊM ẢNH ===== */
         window.addEventListener('pointerdown', () => {
             if (!started) return;
 
