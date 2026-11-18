@@ -27,7 +27,7 @@
             display: block;
         }
 
-        /* Khung mã QR tệp vào phong thư */
+        /* Khung mã QR tệp vào phong thư trên thiệp */
         .qr-overlay {
             position: absolute;
             bottom: 11%;  /* Chỉnh số này nếu muốn dịch lên/xuống cho khớp miệng phong thư */
@@ -66,10 +66,10 @@
 <body>
 
     <div class="card-container">
-        <!-- Ảnh thiết kế gốc của em -->
+        <!-- Ảnh thiết kế thiệp gốc của em -->
         <img src="thiep.png" alt="Thiệp Happy Boy's Day" class="main-img">
 
-        <!-- Mã QR trỏ trực tiếp đến trang love.html trên GitHub của em -->
+        <!-- Mã QR tự động tạo và trỏ trực tiếp đến trang love.html trên GitHub Pages của em -->
         <div class="qr-overlay">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lamkhuengo13-afk.github.io/19thang11forSonyeu/love.html" alt="QR Code">
             <div class="qr-text">Quét đi anh ạ ❤️</div>
