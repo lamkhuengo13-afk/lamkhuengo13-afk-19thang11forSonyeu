@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -15,8 +14,8 @@
         body {
             margin: 0;
             padding: 20px 12px 35px;
-            background-color: #fbf6ec;
-            font-family: Arial, sans-serif;
+            background: #fbf6ec;
+            font-family: Georgia, 'Times New Roman', serif;
         }
 
         .card-container {
@@ -36,41 +35,83 @@
             height: auto;
         }
 
-        /* Trang 3 là khung chứa mã QR */
+        /* QR nằm giữa trang 3 */
         .page-3 {
             position: relative;
         }
 
-        .qr-overlay {
+        /* Khung tem thư */
+        .qr-stamp {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 30%;
-            max-width: 150px;
-            min-width: 95px;
-            padding: 8px;
-            background: #fbf6ec;
-            border: 2px dashed #79222c;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            width: 38%;
+            max-width: 180px;
+            min-width: 120px;
+            padding: 9px;
+            background: #fff9ed;
+            border: 2px dashed #a64b52;
+            border-radius: 13px;
+            box-shadow: 0 5px 18px rgba(65, 15, 25, 0.22);
             text-align: center;
             z-index: 2;
         }
 
-        .qr-overlay img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
+        .stamp-inner {
+            border: 1px solid rgba(121, 34, 44, 0.25);
+            border-radius: 8px;
+            padding: 9px 7px 8px;
         }
 
-        .qr-text {
+        .stamp-heading {
             color: #79222c;
-            font-size: clamp(9px, 2.5vw, 13px);
-            font-weight: 600;
-            margin-top: 5px;
+            font-size: clamp(7px, 1.9vw, 10px);
+            font-weight: bold;
+            letter-spacing: 1.2px;
+            line-height: 1.5;
+            margin-bottom: 7px;
+        }
+
+        .stamp-heart {
+            color: #b94d60;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        /* QR: giữ nguyên hình vuông, không bo méo */
+        .qr-code {
+            display: block;
+            width: 100%;
+            max-width: 125px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+            padding: 5px;
+            background: #fff;
+            border: 1px solid #ead7c9;
+            border-radius: 5px;
+        }
+
+        .stamp-caption {
+            color: #79222c;
+            font-size: clamp(9px, 2.5vw, 12px);
+            font-weight: bold;
+            margin-top: 8px;
             line-height: 1.4;
+        }
+
+        .stamp-footer {
+            color: #a87976;
+            font-size: clamp(7px, 1.8vw, 9px);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .stamp-decoration {
+            color: #c77b83;
+            font-size: 11px;
+            margin-top: 5px;
+            letter-spacing: 5px;
         }
 
         @media (min-width: 768px) {
@@ -84,10 +125,14 @@
                 padding: 10px 6px 25px;
             }
 
-            .qr-overlay {
-                width: 32%;
-                min-width: 85px;
-                padding: 5px;
+            .qr-stamp {
+                width: 40%;
+                min-width: 105px;
+                padding: 6px;
+            }
+
+            .stamp-inner {
+                padding: 7px 5px;
             }
         }
     </style>
@@ -107,17 +152,36 @@
             <img src="thiep2.png" alt="Trang 2 - Lời chúc">
         </section>
 
-        <!-- TRANG 3 + MÃ QR Ở CHÍNH GIỮA -->
+        <!-- TRANG 3 + QR TEM THƯ -->
         <section class="card-page page-3">
             <img src="thiep3.png" alt="Trang 3 - Trang kết">
 
-            <div class="qr-overlay">
-                <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Flamkhuengo13-afk.github.io%2Flamkhuengo13-afk-19thang11forSonyeu%2Flove.html"
-                    alt="Mã QR mở món quà bí mật">
+            <div class="qr-stamp">
+                <div class="stamp-inner">
 
-                <div class="qr-text">
-                    Quét đi anh ạ ❤️
+                    <div class="stamp-heading">
+                        A LITTLE SURPRISE<br>FOR YOU
+                    </div>
+
+                    <div class="stamp-heart">♥</div>
+
+                    <img
+                        class="qr-code"
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=121212&bgcolor=FFFFFF&data=https%3A%2F%2Flamkhuengo13-afk.github.io%2Flamkhuengo13-afk-19thang11forSonyeu%2Flove.html"
+                        alt="Quét mã QR để mở món quà bí mật">
+
+                    <div class="stamp-caption">
+                        Scan me, my love ♡
+                    </div>
+
+                    <div class="stamp-footer">
+                        Made with love, just for you
+                    </div>
+
+                    <div class="stamp-decoration">
+                        ♥ ♡ ♥
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -126,4 +190,3 @@
 
 </body>
 </html>
-```
