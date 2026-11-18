@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sơn iu cụa em ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #79222c, #4a131a);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hiệu ứng trái tim và hoa bay lên */
+        .floating-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .float-item {
+            position: absolute;
+            bottom: -50px;
+            animation: riseUp linear infinite;
+            opacity: 0.8;
+        }
+        @keyframes riseUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.6);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Hộp thông điệp ở giữa */
+        .message-box {
+            position: relative;
+            z-index: 10;
+            background: rgba(251, 246, 236, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border: 2px solid #e9d8c5;
+        }
+        h2 {
+            color: #79222c;
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+        p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Khu vực hiệu ứng hoa, tim bay lên -->
+    <div class="floating-container" id="floatContainer"></div>
+
+    <div class="message-box">
+        <h2>Gửi Sơn iu cụa em ❤️</h2>
+        <p>Every little moment with you is special! Chúc anh luôn vui vẻ và mãi yêu em nhiều thế này nhé! 🥰✨</p>
+    </div>
+
+    <script>
+        const container = document.getElementById('floatContainer');
+        // Các biểu tượng hoa, tim và có thể chèn ảnh nếu muốn
+        const symbols = ['🌸', '💖', '🌷', '✨', '💐', '❤️', '🌹'];
+
+        function createItem() {
+            const item = document.createElement('div');
+            item.classList.add('float-item');
+            item.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            const size = Math.random() * 24 + 18; // Kích thước icon
+            item.style.fontSize = size + 'px';
+            item.style.left = Math.random() * 100 + 'vw';
+            
+            const duration = Math.random() * 4 + 4; // Tốc độ bay (4-8 giây)
+            item.style.animationDuration = duration + 's';
+            
+            container.appendChild(item);
+
+            setTimeout(() => {
+                item.remove();
+            }, duration * 1000);
+        }
+
+        // Tần suất xuất hiện (300ms/lần)
+        setInterval(createItem, 300);
+    </script>
+</body>
+</html>

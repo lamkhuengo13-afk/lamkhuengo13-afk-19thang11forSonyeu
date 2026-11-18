@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sơn iu cụa em ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fbf6ec; /* Màu nền lót xung quanh */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Khung chứa ảnh thiệp cuộn */
+        .card-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px; /* Độ rộng vừa vặn cho điện thoại */
+        }
+
+        /* Ảnh thiết kế gốc của em */
+        .card-container img.main-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Ô chứa mã QR nổi lên trên phong bì ở cuối ảnh */
+        .qr-overlay {
+            position: absolute;
+            /* 👇 Chỉnh 2 thông số này để dịch mã QR vào đúng vị trí cái phong bì ở cuối ảnh của em */
+            bottom: 8%;  /* Khoảng cách từ đáy ảnh lên */
+            left: 50%;   /* Canh giữa theo chiều ngang */
+            transform: translateX(-50%);
+            
+            background: white;
+            padding: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .qr-overlay img {
+            width: 110px; /* Kích thước mã QR (to/nhỏ chỉnh ở đây) */
+            height: 110px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- 1. Hiển thị nguyên vẹn tấm ảnh thiết kế dài của em -->
+        <img src="thiep.png" alt="Thiệp Happy Boy's Day" class="main-img">
+
+        <!-- 2. Mã QR tự động đè lên đúng chỗ cái phong bì ở cuối ảnh -->
+        <div class="qr-overlay">
+            <!-- Thay cái link trong chữ 'data=' bằng đường link Netlify trang web hoa bay (love.html) của em -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://link-trang-love-cua-em.netlify.app" alt="QR Code">
+        </div>
+    </div>
+
+</body>
+</html>
