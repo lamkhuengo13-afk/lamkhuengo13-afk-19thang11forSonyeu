@@ -8,16 +8,25 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #79222c, #4a131a);
+            background: radial-gradient(circle at center, #6b1d26 0%, #2c090d 100%);
             height: 100vh;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', serif;
         }
 
-        /* Hiệu ứng trái tim và hoa bay lên */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(251, 246, 236, 0.05) 1px, transparent 0);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
         .floating-container {
             position: absolute;
             width: 100%;
@@ -26,76 +35,223 @@
             left: 0;
             pointer-events: none;
             overflow: hidden;
+            z-index: 1;
         }
+
         .float-item {
             position: absolute;
-            bottom: -50px;
-            animation: riseUp linear infinite;
-            opacity: 0.8;
+            bottom: -140px;
+            animation: riseUp linear forwards;
+            user-select: none;
+            will-change: transform, opacity;
         }
+
+        /* Khung ảnh Polaroid cho 4 bức ảnh đôi (x1) */
+        .polaroid-frame {
+            background: #fbf6ec;
+            padding: 6px 6px 18px 6px;
+            border-radius: 4px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid #e2d2be;
+        }
+
+        .polaroid-frame img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(15%) contrast(105%);
+        }
+
+        /* Các sticker vintage bay nhỏ xinh xung quanh */
+        .vintage-sticker {
+            border-radius: 8px;
+            filter: drop-shadow(0 5px 12px rgba(0,0,0,0.4));
+            object-fit: contain;
+        }
+
         @keyframes riseUp {
             0% {
-                transform: translateY(0) rotate(0deg) scale(0.6);
-                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(var(--start-rot)) scale(0.7);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.95;
+            }
+            85% {
+                opacity: 0.9;
             }
             100% {
-                transform: translateY(-110vh) rotate(360deg) scale(1.2);
+                transform: translateY(-115vh) translateX(var(--tilt-drift)) rotate(var(--end-rot)) scale(1.05);
                 opacity: 0;
             }
         }
 
-        /* Hộp thông điệp ở giữa */
-        .message-box {
-            position: relative;
+        /* --- BÓ HOA HỒNG (6.jpg) KHỔNG LỒ CHỐT HẠ Ở GIỮA MÀN HÌNH --- */
+        #final-bouquet {
+            position: absolute;
             z-index: 10;
-            background: rgba(251, 246, 236, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 320px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            border: 2px solid #e9d8c5;
+            width: 230px;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            border: 3px solid #fbf6ec;
+            opacity: 0;
+            transform: scale(0.3) translateY(120px);
+            transition: all 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
         }
-        h2 {
+
+        #final-bouquet.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Màn hình chào ban đầu */
+        #welcome-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(44, 9, 13, 0.92);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        .welcome-box {
+            background: #fbf6ec;
+            padding: 30px 25px;
+            border-radius: 16px;
+            border: 2px dashed #79222c;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            max-width: 300px;
+        }
+
+        .welcome-box h3 {
             color: #79222c;
             margin-top: 0;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
         }
-        p {
+
+        .welcome-box p {
             color: #555;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             line-height: 1.5;
-            margin-bottom: 0;
+            margin-bottom: 20px;
+        }
+
+        .unlock-btn {
+            background: #79222c;
+            color: #fbf6ec;
+            border: none;
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 4px 12px rgba(121, 34, 44, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .unlock-btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
 
-    <!-- Khu vực hiệu ứng hoa, tim bay lên -->
+    <div id="welcome-overlay">
+        <div class="welcome-box">
+            <h3>For Sơn iu cụa em ❤️</h3>
+            <p>Chạm vào nút bên dưới để mở hộp kỷ niệm và nhận quà nhé!</p>
+            <button class="unlock-btn" id="startBtn">Thơm em mụt cái để mở</button>
+        </div>
+    </div>
+
     <div class="floating-container" id="floatContainer"></div>
 
-    <div class="message-box">
-        <h2>Gửi Sơn iu cụa em ❤️</h2>
-        <p>Every little moment with you is special! Chúc anh luôn vui vẻ và mãi yêu em nhiều thế này nhé! 🥰✨</p>
-    </div>
+    <!-- Bó hoa hồng lớn (6.jpg) xuất hiện chốt hạ ở giữa -->
+    <img src="6.jpg" id="final-bouquet" alt="Bó hoa hồng tặng Sơn">
 
     <script>
         const container = document.getElementById('floatContainer');
-        // Các biểu tượng hoa, tim và có thể chèn ảnh nếu muốn
-        const symbols = ['🌸', '💖', '🌷', '✨', '💐', '❤️', '🌹'];
+        const startBtn = document.getElementById('startBtn');
+        const overlay = document.getElementById('welcome-overlay');
+        const finalBouquet = document.getElementById('final-bouquet');
 
-        function createItem() {
+        // 4 bức ảnh kỷ niệm của hai đứa (x1)
+        const photos = [
+            '0c606106d6f356ad0fe2.jpg',
+            '80420604b1f131af68e0.jpg',
+            '9b061040a7b527eb7ea4.jpg',
+            'a1dfcdb97a4cfa12a35d.jpg'
+        ];
+
+        // Danh sách sticker bay xung quanh (đã loại trừ 6.jpg vì để dành làm vedette cuối)[cite: 14]
+        const stickers = [
+            '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', 
+            '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', 
+            '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', 
+            '17.jpg', '18.jpg', '19.jpg', '20.jpg'
+        ];
+
+        let currentTilt = 0;
+
+        function initSensors() {
+            if (window.DeviceOrientationEvent) {
+                if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    DeviceOrientationEvent.requestPermission().catch(console.error);
+                }
+                window.addEventListener('deviceorientation', (e) => {
+                    if (e.gamma !== null) {
+                        currentTilt = e.gamma * 14;
+                    }
+                });
+            }
+        }
+
+        function createItem(typeHint = null) {
             const item = document.createElement('div');
             item.classList.add('float-item');
-            item.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+
+            // 30% xác suất là ảnh đôi, 70% là các sticker vintage bay xung quanh
+            const isPhoto = typeHint !== null ? typeHint : (Math.random() < 0.30);
+
+            if (isPhoto) {
+                const frame = document.createElement('div');
+                frame.classList.add('polaroid-frame');
+                const img = document.createElement('img');
+                img.src = photos[Math.floor(Math.random() * photos.length)];
+                frame.appendChild(img);
+                item.appendChild(frame);
+            } else {
+                const img = document.createElement('img');
+                img.src = stickers[Math.floor(Math.random() * stickers.length)];
+                img.classList.add('vintage-sticker');
+                
+                const size = Math.floor(Math.random() * 25 + 42); // Kích thước bé xinh 42px - 67px
+                img.style.width = size + 'px';
+                img.style.height = 'auto';
+                item.appendChild(img);
+            }
+
+            item.style.left = (Math.random() * 88 + 2) + 'vw';
+
+            const startRot = (Math.random() * 40 - 20) + 'deg';
+            const endRot = (Math.random() * 90 - 45) + 'deg';
+            const totalDrift = (Math.random() * 50 - 25) + currentTilt + 'px';
             
-            const size = Math.random() * 24 + 18; // Kích thước icon
-            item.style.fontSize = size + 'px';
-            item.style.left = Math.random() * 100 + 'vw';
-            
-            const duration = Math.random() * 4 + 4; // Tốc độ bay (4-8 giây)
+            item.style.setProperty('--start-rot', startRot);
+            item.style.setProperty('--end-rot', endRot);
+            item.style.setProperty('--tilt-drift', totalDrift);
+
+            const duration = Math.random() * 3 + 4.5;
             item.style.animationDuration = duration + 's';
-            
+
             container.appendChild(item);
 
             setTimeout(() => {
@@ -103,8 +259,35 @@
             }, duration * 1000);
         }
 
-        // Tần suất xuất hiện (300ms/lần)
-        setInterval(createItem, 300);
+        startBtn.addEventListener('click', () => {
+            initSensors();
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.remove(), 500);
+
+            // Thả sticker và ảnh kỷ niệm bay lên trong 5.5 giây đầu
+            let spawnInterval = setInterval(() => {
+                createItem();
+            }, 350);
+
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => createItem(i % 2 === 0), i * 100);
+            }
+
+            // Sau 5.5 giây: Ngừng thả thêm, để đống ảnh/sticker bay hết lên trên, rồi bó hoa hồng (6.jpg) xuất hiện ở giữa!
+            setTimeout(() => {
+                clearInterval(spawnInterval);
+                setTimeout(() => {
+                    finalBouquet.classList.add('show');
+                }, 1500);
+            }, 5500);
+        });
+
+        window.addEventListener('pointerdown', () => {
+            if (document.body.contains(overlay)) return;
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => createItem(i % 2 === 0), i * 70);
+            }
+        });
     </script>
 </body>
 </html>
