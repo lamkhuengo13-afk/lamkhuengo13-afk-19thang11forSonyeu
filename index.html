@@ -8,58 +8,71 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #fbf6ec; /* Màu nền lót xung quanh */
+            background-color: #fbf6ec;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* Khung chứa ảnh thiệp cuộn */
         .card-container {
             position: relative;
             width: 100%;
-            max-width: 480px; /* Độ rộng vừa vặn cho điện thoại */
+            max-width: 480px;
         }
 
-        /* Ảnh thiết kế gốc của em */
         .card-container img.main-img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Ô chứa mã QR nổi lên trên phong bì ở cuối ảnh */
+        /* Khung mã QR tệp vào phong thư */
         .qr-overlay {
             position: absolute;
-            /* 👇 Chỉnh 2 thông số này để dịch mã QR vào đúng vị trí cái phong bì ở cuối ảnh của em */
-            bottom: 8%;  /* Khoảng cách từ đáy ảnh lên */
-            left: 50%;   /* Canh giữa theo chiều ngang */
+            bottom: 11%;  /* Chỉnh số này nếu muốn dịch lên/xuống cho khớp miệng phong thư */
+            left: 50%;
             transform: translateX(-50%);
             
-            background: white;
-            padding: 8px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            background: #fbf6ec;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            border: 2px dashed #79222c;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-overlay:hover {
+            transform: translateX(-50%) scale(1.05);
         }
 
         .qr-overlay img {
-            width: 110px; /* Kích thước mã QR (to/nhỏ chỉnh ở đây) */
-            height: 110px;
+            width: 100px;
+            height: 100px;
             display: block;
+            border-radius: 8px;
+        }
+
+        .qr-text {
+            font-size: 0.75rem;
+            color: #79222c;
+            margin-top: 5px;
+            font-weight: 600;
+            font-family: sans-serif;
         }
     </style>
 </head>
 <body>
 
     <div class="card-container">
-        <!-- 1. Hiển thị nguyên vẹn tấm ảnh thiết kế dài của em -->
+        <!-- Ảnh thiết kế gốc của em -->
         <img src="thiep.png" alt="Thiệp Happy Boy's Day" class="main-img">
 
-        <!-- 2. Mã QR tự động đè lên đúng chỗ cái phong bì ở cuối ảnh -->
+        <!-- Mã QR trỏ trực tiếp đến trang love.html trên GitHub của em -->
         <div class="qr-overlay">
-            <!-- Thay cái link trong chữ 'data=' bằng đường link Netlify trang web hoa bay (love.html) của em -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://link-trang-love-cua-em.netlify.app" alt="QR Code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lamkhuengo13-afk.github.io/19thang11forSonyeu/love.html" alt="QR Code">
+            <div class="qr-text">Quét đi anh ạ ❤️</div>
         </div>
     </div>
 
