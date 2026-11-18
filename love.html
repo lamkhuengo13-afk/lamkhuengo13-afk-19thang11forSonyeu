@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -7,7 +8,6 @@
     <title>For Sơn iu cụa em ❤️</title>
 
     <style>
-        /* ===== CÀI ĐẶT CHUNG ===== */
         * {
             box-sizing: border-box;
         }
@@ -42,7 +42,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Hiệu ứng hạt bụi vintage */
+        /* Bụi vintage */
         body::after {
             content: "";
             position: fixed;
@@ -59,7 +59,7 @@
             z-index: 2;
         }
 
-        /* ===== KHU VỰC HOA VÀ ẢNH BAY ===== */
+        /* Khu vực ảnh bay */
         .floating-container {
             position: fixed;
             inset: 0;
@@ -83,10 +83,10 @@
             will-change: transform, opacity;
         }
 
-        /* ===== KHUNG ẢNH POLAROID ===== */
+        /* Khung ảnh đôi Polaroid */
         .polaroid-frame {
             background: #fbf6ec;
-            padding: 6px 6px 17px;
+            padding: 7px 7px 19px;
             border-radius: 4px;
 
             box-shadow:
@@ -98,14 +98,14 @@
         .polaroid-frame img {
             display: block;
 
-            width: clamp(58px, 8vw, 80px);
-            height: clamp(58px, 8vw, 80px);
+            width: clamp(72px, 10vw, 100px);
+            height: clamp(72px, 10vw, 100px);
 
             object-fit: cover;
             filter: sepia(15%) contrast(105%);
         }
 
-        /* ===== STICKER VINTAGE ===== */
+        /* Sticker vintage */
         .vintage-sticker {
             display: block;
             max-width: 78px;
@@ -116,7 +116,7 @@
                 drop-shadow(0 5px 12px rgba(0, 0, 0, 0.4));
         }
 
-        /* ===== ANIMATION BAY LÊN ===== */
+        /* Ảnh bay lên */
         @keyframes riseUp {
             0% {
                 transform:
@@ -147,53 +147,7 @@
             }
         }
 
-        /* ===== BÓ HOA HỒNG CUỐI CÙNG ===== */
-        #final-bouquet {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            z-index: 10;
-
-            width: clamp(180px, 35vw, 330px);
-            max-width: calc(100vw - 40px);
-
-            max-height: 72vh;
-            max-height: 72dvh;
-
-            height: auto;
-            object-fit: contain;
-
-            border-radius: 18px;
-
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.7);
-
-            border: 3px solid #fbf6ec;
-
-            opacity: 0;
-
-            transform:
-                translate(-50%, -35%)
-                scale(0.3);
-
-            transition:
-                opacity 1.8s ease,
-                transform 1.8s cubic-bezier(
-                    0.175, 0.885, 0.32, 1.275
-                );
-
-            pointer-events: none;
-        }
-
-        #final-bouquet.show {
-            opacity: 1;
-
-            transform:
-                translate(-50%, -50%)
-                scale(1);
-        }
-
-        /* ===== MÀN HÌNH CHÀO ===== */
+        /* Màn hình chào */
         #welcome-overlay {
             position: fixed;
             inset: 0;
@@ -258,7 +212,6 @@
             margin-bottom: 22px;
         }
 
-        /* ===== NÚT MỞ QUÀ ===== */
         .unlock-btn {
             display: inline-block;
             max-width: 100%;
@@ -285,35 +238,191 @@
             transform: scale(0.95);
         }
 
-        /* ===== ĐIỆN THOẠI ===== */
+        /* ===== THIỆP KẾT THÚC VINTAGE ===== */
+        #final-message {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+
+            z-index: 20;
+
+            width: min(88vw, 460px);
+            padding: 12px;
+
+            background: #e8d8bd;
+
+            border: 1px solid #c4a77f;
+            border-radius: 5px;
+
+            box-shadow:
+                0 18px 50px rgba(0, 0, 0, 0.55),
+                0 0 0 5px rgba(232, 216, 189, 0.12);
+
+            opacity: 0;
+
+            transform:
+                translate(-50%, -42%)
+                scale(0.88);
+
+            pointer-events: none;
+
+            transition:
+                opacity 1.5s ease,
+                transform 1.5s cubic-bezier(
+                    0.175, 0.885, 0.32, 1.275
+                );
+        }
+
+        #final-message.show {
+            opacity: 1;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+        }
+
+        .message-inner {
+            position: relative;
+
+            text-align: center;
+
+            padding:
+                clamp(25px, 7vw, 40px)
+                clamp(15px, 5vw, 28px);
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #fffaf0 0%,
+                    #f5ead6 100%
+                );
+
+            border: 1px solid #c9ad88;
+            outline: 1px solid rgba(121, 34, 44, 0.25);
+            outline-offset: -7px;
+        }
+
+        .message-top {
+            color: #9b7657;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+
+            margin-bottom: 18px;
+        }
+
+        .message-heart {
+            color: #9a2938;
+            font-size: 27px;
+            line-height: 1;
+
+            margin-bottom: 17px;
+
+            text-shadow:
+                0 2px 5px rgba(121, 34, 44, 0.15);
+        }
+
+        .message-title {
+            color: #79222c;
+
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-weight: bold;
+
+            font-size: clamp(25px, 7vw, 39px);
+            line-height: 1.35;
+
+            margin: 0 auto;
+
+            text-shadow:
+                1px 1px 0 #ead7b8;
+        }
+
+        .message-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            margin: 21px 0 16px;
+
+            color: #a47d59;
+            font-size: 13px;
+        }
+
+        .message-divider::before,
+        .message-divider::after {
+            content: "";
+            width: 48px;
+            height: 1px;
+            background: #c8a987;
+        }
+
+        .message-bottom {
+            color: #927456;
+
+            font-size: 11px;
+            letter-spacing: 2px;
+
+            font-style: italic;
+        }
+
+        .corner-decoration {
+            position: absolute;
+            color: #a47d59;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .corner-decoration.top-left {
+            top: 12px;
+            left: 15px;
+        }
+
+        .corner-decoration.top-right {
+            top: 12px;
+            right: 15px;
+        }
+
+        .corner-decoration.bottom-left {
+            bottom: 12px;
+            left: 15px;
+        }
+
+        .corner-decoration.bottom-right {
+            bottom: 12px;
+            right: 15px;
+        }
+
+        /* Điện thoại */
         @media (max-width: 600px) {
             .polaroid-frame {
-                padding: 5px 5px 14px;
+                padding: 6px 6px 16px;
             }
 
             .polaroid-frame img {
-                width: clamp(55px, 17vw, 72px);
-                height: clamp(55px, 17vw, 72px);
-            }
-
-            #final-bouquet {
-                width: min(72vw, 290px);
-                max-height: 65dvh;
+                width: clamp(65px, 19vw, 84px);
+                height: clamp(65px, 19vw, 84px);
             }
 
             .float-item {
                 bottom: -120px;
             }
-        }
 
-        /* ===== MÁY TÍNH BẢNG ===== */
-        @media (min-width: 601px) and (max-width: 1024px) {
-            #final-bouquet {
-                width: min(40vw, 320px);
+            #final-message {
+                width: min(90vw, 390px);
             }
         }
 
-        /* ===== MÀN HÌNH RẤT THẤP ===== */
+        /* Máy tính bảng */
+        @media (min-width: 601px) and (max-width: 1024px) {
+            #final-message {
+                width: min(78vw, 430px);
+            }
+        }
+
+        /* Màn hình thấp */
         @media (max-height: 500px) {
             .welcome-box {
                 padding: 16px 22px;
@@ -323,14 +432,30 @@
                 margin-bottom: 12px;
             }
 
-            #final-bouquet {
-                max-height: 60dvh;
+            .message-inner {
+                padding: 18px 20px;
+            }
+
+            .message-top {
+                margin-bottom: 10px;
+            }
+
+            .message-heart {
+                margin-bottom: 8px;
+            }
+
+            .message-divider {
+                margin: 10px 0;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
             .unlock-btn {
                 transition: none;
+            }
+
+            #final-message {
+                transition: opacity 0.5s ease;
             }
         }
     </style>
@@ -354,59 +479,83 @@
         </div>
     </div>
 
-    <!-- KHU VỰC HIỆU ỨNG -->
+    <!-- KHU VỰC ẢNH BAY -->
     <div class="floating-container" id="floatContainer"></div>
 
-    <!-- BÓ HOA CUỐI CÙNG: ẢNH SỐ 6 -->
-    <img
-        src="6.jpg"
-        id="final-bouquet"
-        alt="Bó hoa hồng tặng Sơn"
-    >
+    <!-- THIỆP LỜI YÊU CUỐI CÙNG -->
+    <div id="final-message">
+        <div class="message-inner">
+
+            <span class="corner-decoration top-left">❧</span>
+            <span class="corner-decoration top-right">❧</span>
+            <span class="corner-decoration bottom-left">❧</span>
+            <span class="corner-decoration bottom-right">❧</span>
+
+            <div class="message-top">
+                A LITTLE LOVE LETTER
+            </div>
+
+            <div class="message-heart">♥</div>
+
+            <h1 class="message-title">
+                Em yêu Anh<br>
+                Nhứt Nhừn Nhưn
+            </h1>
+
+            <div class="message-divider">
+                <span>✦</span>
+                <span>♡</span>
+                <span>✦</span>
+            </div>
+
+            <div class="message-bottom">
+                MADE WITH LOVE, JUST FOR YOU
+            </div>
+
+        </div>
+    </div>
 
     <script>
         const container = document.getElementById('floatContainer');
         const startBtn = document.getElementById('startBtn');
         const overlay = document.getElementById('welcome-overlay');
-        const finalBouquet = document.getElementById('final-bouquet');
+        const finalMessage = document.getElementById('final-message');
 
-        /* ===== ẢNH CỦA HAI ĐỨA =====
-           Mỗi ảnh xuất hiện 2 lần trong danh sách.
-        */
+        /* ===== ẢNH CỦA HAI ĐỨA ===== */
         const photos = [
-            '0c606106d6f356ad0fe2.jpg',
-            '80420604b1f131af68e0.jpg',
-            '9b061040a7b527eb7ea4.jpg',
-            'a1dfcdb97a4cfa12a35d.jpg',
-
             '0c606106d6f356ad0fe2.jpg',
             '80420604b1f131af68e0.jpg',
             '9b061040a7b527eb7ea4.jpg',
             'a1dfcdb97a4cfa12a35d.jpg'
         ];
 
-        /* ===== STICKER VÀ HOA =====
-           Sử dụng ảnh 1-5 và 7-18.
-           Mỗi ảnh được nhân đôi trong danh sách.
-           Ảnh 6 dành riêng cho bó hoa cuối cùng.
-        */
+        /* ===== STICKER TỪ 1 ĐẾN 18 ===== */
         const stickers = [
-            '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
-            '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg',
-            '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg',
-            '17.jpg', '18.jpg',
-
-            '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
-            '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg',
-            '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg',
-            '17.jpg', '18.jpg'
+            '1.jpg',
+            '2.jpg',
+            '3.jpg',
+            '4.jpg',
+            '5.jpg',
+            '6.jpg',
+            '7.jpg',
+            '8.jpg',
+            '9.jpg',
+            '10.jpg',
+            '11.jpg',
+            '12.jpg',
+            '13.jpg',
+            '14.jpg',
+            '15.jpg',
+            '16.jpg',
+            '17.jpg',
+            '18.jpg'
         ];
 
         let currentTilt = 0;
-        let spawnInterval = null;
         let started = false;
 
         const MAX_ITEMS = 45;
+        const SPAWN_DELAY = 220;
 
         /* ===== CẢM BIẾN NGHIÊNG ĐIỆN THOẠI ===== */
         function initSensors() {
@@ -438,27 +587,43 @@
             });
         }
 
+        /* ===== TẠO DANH SÁCH ẢNH: MỖI ẢNH 2 LẦN ===== */
+        function createImageQueue() {
+            const queue = [];
+
+            photos.forEach(src => {
+                queue.push({ type: 'photo', src });
+                queue.push({ type: 'photo', src });
+            });
+
+            stickers.forEach(src => {
+                queue.push({ type: 'sticker', src });
+                queue.push({ type: 'sticker', src });
+            });
+
+            /* Trộn ngẫu nhiên để ảnh đôi và sticker xen kẽ */
+            for (let i = queue.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+
+                [queue[i], queue[j]] = [queue[j], queue[i]];
+            }
+
+            return queue;
+        }
+
         /* ===== TẠO ẢNH VÀ STICKER BAY ===== */
-        function createItem(typeHint = null) {
+        function createItem(entry) {
             if (container.childElementCount >= MAX_ITEMS) return;
 
             const item = document.createElement('div');
             item.classList.add('float-item');
 
-            const isPhoto =
-                typeHint !== null
-                    ? typeHint
-                    : Math.random() < 0.30;
-
-            if (isPhoto) {
+            if (entry.type === 'photo') {
                 const frame = document.createElement('div');
                 frame.classList.add('polaroid-frame');
 
                 const img = document.createElement('img');
-
-                img.src =
-                    photos[Math.floor(Math.random() * photos.length)];
-
+                img.src = entry.src;
                 img.alt = 'Kỷ niệm của hai đứa';
 
                 frame.appendChild(img);
@@ -467,9 +632,7 @@
             } else {
                 const img = document.createElement('img');
 
-                img.src =
-                    stickers[Math.floor(Math.random() * stickers.length)];
-
+                img.src = entry.src;
                 img.classList.add('vintage-sticker');
                 img.alt = '';
 
@@ -481,7 +644,7 @@
                 item.appendChild(img);
             }
 
-            /* Vị trí ngẫu nhiên theo chiều ngang */
+            /* Vị trí ngẫu nhiên */
             item.style.left = (Math.random() * 84 + 5) + 'vw';
 
             const startRot =
@@ -508,6 +671,11 @@
             }, duration * 1000);
         }
 
+        /* ===== HIỆN LỜI YÊU SAU KHI TẤT CẢ ẢNH BAY HẾT ===== */
+        function showFinalMessage() {
+            finalMessage.classList.add('show');
+        }
+
         /* ===== BẮT ĐẦU MỞ HỘP KỶ NIỆM ===== */
         startBtn.addEventListener('click', () => {
             if (started) return;
@@ -522,43 +690,35 @@
                 overlay.remove();
             }, 500);
 
-            /* Ảnh và sticker bay liên tục */
-            spawnInterval = setInterval(() => {
-                createItem();
-            }, 220);
+            const queue = createImageQueue();
+            let index = 0;
 
-            /* Những ảnh đầu tiên xuất hiện ngay */
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    createItem(i % 2 === 0);
-                }, i * 90);
-            }
+            /* Cho ảnh đầu tiên xuất hiện ngay */
+            createItem(queue[index]);
+            index++;
 
-            /* Kết thúc màn bung hoa */
-            setTimeout(() => {
-                clearInterval(spawnInterval);
+            /* Các ảnh tiếp theo lần lượt bay lên */
+            const spawnInterval = setInterval(() => {
+                if (index >= queue.length) {
+                    clearInterval(spawnInterval);
 
-                /* Đợi hiệu ứng bay dịu xuống rồi hiện bó hoa */
-                setTimeout(() => {
-                    finalBouquet.classList.add('show');
-                }, 1500);
+                    /*
+                       Đợi ảnh cuối cùng bay hết.
+                       Thời gian bay tối đa là 7.5 giây.
+                    */
+                    setTimeout(() => {
+                        showFinalMessage();
+                    }, 7600);
 
-            }, 5500);
-        });
+                    return;
+                }
 
-        /* ===== CHẠM MÀN HÌNH ĐỂ TẠO THÊM ẢNH ===== */
-        window.addEventListener('pointerdown', () => {
-            if (!started) return;
-
-            if (container.childElementCount >= MAX_ITEMS - 4) return;
-
-            for (let i = 0; i < 4; i++) {
-                setTimeout(() => {
-                    createItem(i % 2 === 0);
-                }, i * 70);
-            }
+                createItem(queue[index]);
+                index++;
+            }, SPAWN_DELAY);
         });
     </script>
 
 </body>
 </html>
+```
