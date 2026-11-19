@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -31,11 +32,7 @@
             align-items: center;
 
             background:
-                radial-gradient(
-                    circle at center,
-                    #6b1d26 0%,
-                    #2c090d 100%
-                );
+                radial-gradient(circle at center, #6b1d26 0%, #2c090d 100%);
 
             font-family: Georgia, serif;
             -webkit-tap-highlight-color: transparent;
@@ -48,10 +45,7 @@
             inset: 0;
 
             background-image:
-                radial-gradient(
-                    rgba(251, 246, 236, 0.05) 1px,
-                    transparent 0
-                );
+                radial-gradient(rgba(251, 246, 236, 0.05) 1px, transparent 0);
 
             background-size: 20px 20px;
             pointer-events: none;
@@ -82,37 +76,34 @@
             will-change: transform, opacity;
         }
 
-        /* Khung ảnh đôi Polaroid */
+        /* Ảnh đôi Polaroid - kích thước lớn hơn */
         .polaroid-frame {
             background: #fbf6ec;
-            padding: 7px 7px 19px;
+            padding: 8px 8px 21px;
             border-radius: 4px;
 
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.5);
-
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             border: 1px solid #e2d2be;
         }
 
         .polaroid-frame img {
             display: block;
 
-            width: clamp(72px, 10vw, 100px);
-            height: clamp(72px, 10vw, 100px);
+            width: clamp(90px, 11vw, 120px);
+            height: clamp(90px, 11vw, 120px);
 
             object-fit: cover;
             filter: sepia(15%) contrast(105%);
         }
 
-        /* Sticker vintage */
+        /* Sticker vintage - tăng kích thước */
         .vintage-sticker {
             display: block;
-            max-width: 78px;
+            max-width: 110px;
             height: auto;
             object-fit: contain;
 
-            filter:
-                drop-shadow(0 5px 12px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.4));
         }
 
         /* Ảnh bay lên */
@@ -159,7 +150,6 @@
 
             display: flex;
             flex-direction: column;
-
             justify-content: center;
             align-items: center;
 
@@ -172,7 +162,6 @@
                 max(20px, env(safe-area-inset-left));
 
             background: rgba(44, 9, 13, 0.92);
-
             transition: opacity 0.5s ease;
         }
 
@@ -189,8 +178,7 @@
             border-radius: 16px;
             border: 2px dashed #79222c;
 
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .welcome-box h3 {
@@ -204,10 +192,8 @@
 
         .welcome-box p {
             color: #555;
-
             font-size: clamp(13px, 3.5vw, 15px);
             line-height: 1.6;
-
             margin-bottom: 22px;
         }
 
@@ -227,9 +213,7 @@
             cursor: pointer;
             font-family: Georgia, serif;
 
-            box-shadow:
-                0 4px 12px rgba(121, 34, 44, 0.4);
-
+            box-shadow: 0 4px 12px rgba(121, 34, 44, 0.4);
             transition: transform 0.2s ease;
         }
 
@@ -246,16 +230,15 @@
             z-index: 20;
 
             width: min(88vw, 460px);
-            padding: 12px;
+            padding: 11px;
 
             background: #e8d8bd;
-
             border: 1px solid #c4a77f;
-            border-radius: 5px;
+            border-radius: 4px;
 
             box-shadow:
-                0 18px 50px rgba(0, 0, 0, 0.55),
-                0 0 0 5px rgba(232, 216, 189, 0.12);
+                0 20px 55px rgba(0, 0, 0, 0.55),
+                0 0 0 5px rgba(232, 216, 189, 0.1);
 
             opacity: 0;
 
@@ -267,9 +250,7 @@
 
             transition:
                 opacity 1.5s ease,
-                transform 1.5s cubic-bezier(
-                    0.175, 0.885, 0.32, 1.275
-                );
+                transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         #final-message.show {
@@ -282,69 +263,98 @@
 
         .message-inner {
             position: relative;
+            overflow: hidden;
 
             text-align: center;
 
-            padding:
-                clamp(25px, 7vw, 40px)
-                clamp(15px, 5vw, 28px);
+            padding: clamp(30px, 7vw, 44px)
+                     clamp(18px, 6vw, 34px);
 
             background:
-                radial-gradient(
-                    circle at center,
-                    #fffaf0 0%,
-                    #f5ead6 100%
-                );
+                radial-gradient(circle at center, #fffaf0 0%, #f2e5ce 100%);
 
-            border: 1px solid #c9ad88;
-            outline: 1px solid rgba(121, 34, 44, 0.25);
+            border: 1px solid #b99570;
+            outline: 1px solid rgba(121, 34, 44, 0.3);
             outline-offset: -7px;
+        }
+
+        /* Họa tiết nền nhẹ */
+        .message-inner::before {
+            content: "✧";
+            position: absolute;
+            top: 48%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            color: rgba(164, 125, 89, 0.08);
+            font-size: 180px;
+            pointer-events: none;
+        }
+
+        .message-content {
+            position: relative;
+            z-index: 1;
         }
 
         .message-top {
             color: #9b7657;
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 4px;
             text-transform: uppercase;
+            margin-bottom: 17px;
+        }
 
-            margin-bottom: 18px;
+        .message-ornament {
+            color: #a47d59;
+            font-size: 17px;
+            letter-spacing: 5px;
+            margin-bottom: 13px;
         }
 
         .message-heart {
-            color: #9a2938;
-            font-size: 27px;
-            line-height: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            margin-bottom: 17px;
+            width: 43px;
+            height: 43px;
 
-            text-shadow:
-                0 2px 5px rgba(121, 34, 44, 0.15);
+            margin: 0 auto 19px;
+
+            border: 1px solid #c7a27f;
+            border-radius: 50%;
+
+            color: #8e2935;
+            font-size: 20px;
+
+            background: rgba(255, 250, 240, 0.7);
+            box-shadow: 0 3px 10px rgba(121, 34, 44, 0.1);
         }
 
+        /* Lời chúc chính */
         .message-title {
             color: #79222c;
 
             font-family: Georgia, serif;
-            font-style: italic;
             font-weight: bold;
+            font-style: italic;
 
-            font-size: clamp(25px, 7vw, 39px);
+            font-size: clamp(27px, 7.5vw, 39px);
             line-height: 1.35;
 
             margin: 0 auto;
 
-            text-shadow:
-                1px 1px 0 #ead7b8;
+            text-shadow: 1px 1px 0 #ead7b8;
         }
 
         .message-divider {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 12px;
 
-            gap: 10px;
-
-            margin: 21px 0 16px;
+            margin: 22px 0 17px;
 
             color: #a47d59;
             font-size: 13px;
@@ -353,24 +363,38 @@
         .message-divider::before,
         .message-divider::after {
             content: "";
-            width: 48px;
+            width: 45px;
             height: 1px;
             background: #c8a987;
         }
 
-        .message-bottom {
-            color: #927456;
+        /* Câu nhắn phụ */
+        .message-note {
+            color: #795b47;
 
-            font-size: 11px;
-            letter-spacing: 2px;
-
+            font-family: Georgia, serif;
             font-style: italic;
+
+            font-size: clamp(14px, 4vw, 17px);
+            line-height: 1.7;
+
+            margin: 0 auto;
+            max-width: 310px;
+        }
+
+        .message-bottom {
+            color: #a08060;
+
+            font-size: 9px;
+            letter-spacing: 2.5px;
+
+            margin-top: 22px;
         }
 
         .corner-decoration {
             position: absolute;
             color: #a47d59;
-            font-size: 18px;
+            font-size: 20px;
             opacity: 0.8;
         }
 
@@ -397,12 +421,16 @@
         /* Điện thoại */
         @media (max-width: 600px) {
             .polaroid-frame {
-                padding: 6px 6px 16px;
+                padding: 7px 7px 18px;
             }
 
             .polaroid-frame img {
-                width: clamp(65px, 19vw, 84px);
-                height: clamp(65px, 19vw, 84px);
+                width: clamp(78px, 21vw, 100px);
+                height: clamp(78px, 21vw, 100px);
+            }
+
+            .vintage-sticker {
+                max-width: 92px;
             }
 
             .float-item {
@@ -410,7 +438,19 @@
             }
 
             #final-message {
-                width: min(90vw, 390px);
+                width: min(91vw, 390px);
+            }
+
+            .message-inner {
+                padding: 32px 19px;
+            }
+
+            .message-top {
+                letter-spacing: 3px;
+            }
+
+            .message-title {
+                font-size: clamp(27px, 8vw, 34px);
             }
         }
 
@@ -418,6 +458,11 @@
         @media (min-width: 601px) and (max-width: 1024px) {
             #final-message {
                 width: min(78vw, 430px);
+            }
+
+            .polaroid-frame img {
+                width: 110px;
+                height: 110px;
             }
         }
 
@@ -436,15 +481,21 @@
             }
 
             .message-top {
-                margin-bottom: 10px;
+                margin-bottom: 8px;
             }
 
             .message-heart {
                 margin-bottom: 8px;
+                width: 34px;
+                height: 34px;
             }
 
             .message-divider {
                 margin: 10px 0;
+            }
+
+            .message-bottom {
+                margin-top: 10px;
             }
         }
 
@@ -481,7 +532,7 @@
     <!-- KHU VỰC ẢNH BAY -->
     <div class="floating-container" id="floatContainer"></div>
 
-    <!-- THIỆP LỜI YÊU CUỐI CÙNG -->
+    <!-- THIỆP LỜI NHẮN CUỐI CÙNG -->
     <div id="final-message">
         <div class="message-inner">
 
@@ -490,27 +541,38 @@
             <span class="corner-decoration bottom-left">❧</span>
             <span class="corner-decoration bottom-right">❧</span>
 
-            <div class="message-top">
-                A LITTLE LOVE LETTER
+            <div class="message-content">
+
+                <div class="message-top">
+                    A LITTLE LOVE LETTER
+                </div>
+
+                <div class="message-ornament">
+                    ✦ &nbsp; ❦ &nbsp; ✦
+                </div>
+
+                <div class="message-heart">♥</div>
+
+                <h1 class="message-title">
+                    Chúc tình iu<br>
+                    ăn ún ngon mịn ạ
+                </h1>
+
+                <div class="message-divider">
+                    <span>✦</span>
+                    <span>♡</span>
+                    <span>✦</span>
+                </div>
+
+                <p class="message-note">
+                    Bé gọi món vứi thanh toán xong hít rùi ♡
+                </p>
+
+                <div class="message-bottom">
+                    MADE WITH LOVE, JUST FOR YOU
+                </div>
+
             </div>
-
-            <div class="message-heart">♥</div>
-
-            <h1 class="message-title">
-                Chúc tình iu ăn ún ngon mịn ạ<br>
-                Bé gọi món vứi thanh toán xong hít rùi
-            </h1>
-
-            <div class="message-divider">
-                <span>✦</span>
-                <span>♡</span>
-                <span>✦</span>
-            </div>
-
-            <div class="message-bottom">
-                MADE WITH LOVE, JUST FOR YOU
-            </div>
-
         </div>
     </div>
 
@@ -554,7 +616,7 @@
         let started = false;
 
         const MAX_ITEMS = 45;
-        const SPAWN_DELAY = 220;
+        const SPAWN_DELAY = 260;
 
         /* ===== CẢM BIẾN NGHIÊNG ĐIỆN THOẠI ===== */
         function initSensors() {
@@ -600,10 +662,9 @@
                 queue.push({ type: 'sticker', src });
             });
 
-            /* Trộn ngẫu nhiên để ảnh đôi và sticker xen kẽ */
+            /* Trộn ngẫu nhiên */
             for (let i = queue.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-
                 [queue[i], queue[j]] = [queue[j], queue[i]];
             }
 
@@ -635,10 +696,10 @@
                 img.classList.add('vintage-sticker');
                 img.alt = '';
 
-                const size = Math.random() * 5 + 10;
+                const size = Math.random() * 6 + 13;
 
                 img.style.width =
-                    `clamp(42px, ${size}vw, 78px)`;
+                    `clamp(58px, ${size}vw, 110px)`;
 
                 item.appendChild(img);
             }
@@ -670,7 +731,7 @@
             }, duration * 1000);
         }
 
-        /* ===== HIỆN LỜI YÊU SAU KHI TẤT CẢ ẢNH BAY HẾT ===== */
+        /* ===== HIỆN LỜI NHẮN CUỐI ===== */
         function showFinalMessage() {
             finalMessage.classList.add('show');
         }
@@ -692,18 +753,18 @@
             const queue = createImageQueue();
             let index = 0;
 
-            /* Cho ảnh đầu tiên xuất hiện ngay */
+            /* Ảnh đầu tiên xuất hiện ngay */
             createItem(queue[index]);
             index++;
 
-            /* Các ảnh tiếp theo lần lượt bay lên */
+            /* Những ảnh tiếp theo lần lượt bay lên */
             const spawnInterval = setInterval(() => {
                 if (index >= queue.length) {
                     clearInterval(spawnInterval);
 
                     /*
-                       Đợi ảnh cuối cùng bay hết.
-                       Thời gian bay tối đa là 7.5 giây.
+                       Chờ ảnh cuối cùng bay hết
+                       trước khi hiện tấm thiệp.
                     */
                     setTimeout(() => {
                         showFinalMessage();
@@ -720,4 +781,4 @@
 
 </body>
 </html>
-
+```
