@@ -95,14 +95,25 @@
             filter: sepia(15%) contrast(105%);
         }
 
-        /* Sticker vintage - tăng kích thước */
-        .vintage-sticker {
-            display: block;
-            max-width: 110px;
-            height: auto;
-            object-fit: contain;
+        /* Khung Polaroid riêng cho sticker */
+        .sticker-frame {
+            width: clamp(88px, 12vw, 124px);
+            padding: 7px 7px 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fbf6ec;
+            border: 1px solid #e2d2be;
+            border-radius: 4px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
 
-            filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.4));
+        .sticker-frame .vintage-sticker {
+            display: block;
+            width: 100%;
+            height: clamp(68px, 9vw, 96px);
+            object-fit: contain;
+            filter: none;
         }
 
         /* Ảnh bay lên */
@@ -428,8 +439,13 @@
                 height: clamp(78px, 21vw, 100px);
             }
 
-            .vintage-sticker {
-                max-width: 92px;
+            .sticker-frame {
+                width: clamp(82px, 25vw, 112px);
+                padding: 6px 6px 17px;
+            }
+
+            .sticker-frame .vintage-sticker {
+                height: clamp(66px, 19vw, 88px);
             }
 
             .float-item {
@@ -688,18 +704,17 @@
                 item.appendChild(frame);
 
             } else {
-                const img = document.createElement('img');
+                /* Sticker cũng được đặt trong khung Polaroid màu kem */
+                const frame = document.createElement('div');
+                frame.classList.add('polaroid-frame', 'sticker-frame');
 
+                const img = document.createElement('img');
                 img.src = entry.src;
                 img.classList.add('vintage-sticker');
-                img.alt = '';
+                img.alt = 'Sticker kỷ niệm';
 
-                const size = Math.random() * 6 + 13;
-
-                img.style.width =
-                    `clamp(58px, ${size}vw, 110px)`;
-
-                item.appendChild(img);
+                frame.appendChild(img);
+                item.appendChild(frame);
             }
 
             /* Vị trí ngẫu nhiên */
@@ -779,4 +794,3 @@
 
 </body>
 </html>
-
